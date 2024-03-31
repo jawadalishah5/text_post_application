@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: @post, url: posts_path, html: { multipart: true }, local: false, remote: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control", rows: 3, id: "posts_content" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :media, style: 'display: None' %>
+        <%= form.file_field :media, class: "form-control-file", id: "posts_media" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit "Post", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br> <!-- Line break after the card -->

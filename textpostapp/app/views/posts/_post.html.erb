@@ -1,0 +1,25 @@
+<%= render "posts/edit_modal" %>
+
+<div id="post_<%= post.id %>">
+    <h4><%= post.content %></h4>
+    <% if post.media.attached? %>
+        <% if post.media.content_type.starts_with?('image/') %>
+            <%= image_tag post.media, style: "max-width: 300px; max-height: 300px;" %>
+        <% elsif post.media.content_type.starts_with?('video/') %>
+            <%= video_tag post.media, controls: true, style: "max-width: 300px; max-height: 300px;" %>
+        <% end %>
+        <br/>
+    <% end %>
+    <em><sup><%= post.updated_at %></sup></em><br/>
+    <sup>-- Posts by <%= post.user.email %></sup><br>
+    <% if post.user == current_user %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-primary', data: { bs_toggle: "modal", bs_target: "#editPostModal", remote: true } %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger', remote: true %>
+    <% end %>
+    <hr/> <!-- Line break after each post -->
+</div>
+
+
+
+
+
