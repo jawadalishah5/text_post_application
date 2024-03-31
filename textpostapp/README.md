@@ -1,24 +1,26 @@
-# README
+## Execute the app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Build the Dockerfile using:
 
-Things you may want to cover:
+   ```
+   docker build -t textpostapp .
+   ```
 
-* Ruby version
+2. Execute the Docker container:
 
-* System dependencies
+   ```
+   docker run -it -p 3000:3000 textpostapp bash
+   ```
 
-* Configuration
+3. Execute the PSQL:
 
-* Database creation
+   ```
+   service postgresql start
+   ```
 
-* Database initialization
+4. Setup the application and execute:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+   ```
+   bin/setup
+   rails s -b 0.0.0.0
+   ```
